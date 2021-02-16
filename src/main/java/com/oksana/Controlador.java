@@ -25,17 +25,14 @@ public class Controlador {
 	
 	@GetMapping("/")
 	public String inicio (Model model) {
-		
-		
-	
-		String nombre= "Enrique";
+		//Ya no hace falta este codigo ya que los datos  vamos a sacar de BD
+		/*String nombre= "Enrique";
 		
 		var persona= new Persona();
 		persona.setNombre("Juan");
 		persona.setApellido("Perez");
 		persona.setEmail("dfdfg2sdfñ.es");
 		persona.setTelefono("49568875");
-		
 		
 		var persona2= new Persona();
 		persona2.setNombre("Karla");
@@ -49,13 +46,14 @@ public class Controlador {
 		//personas.add(persona2);
 		
 		var personas = Arrays.asList(persona, persona2);
-	
-		
+
 		model.addAttribute("nombre", nombre);
 		model.addAttribute("saludo", saludo);
+		model.addAttribute("persona", persona);*/
 		
-		model.addAttribute("persona", persona);
-		model.addAttribute("personas", personas);
+		
+		//de momento comentamos para que no de errores
+		//model.addAttribute("personas", personas);
 		
 		
 		return "inicio";
