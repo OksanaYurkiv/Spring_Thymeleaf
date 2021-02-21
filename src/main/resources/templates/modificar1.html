@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html  xmlns:th= "http://www.thymeleaf.org"
+         xmlns="http://www.w3.org/1999/xhtml">
+       
+<head>
+<title>Datos de la persona</title>
+<meta charset="UTF-8"/>
+</head>
+<body>
+ <h1>Datos de la persona</h1>
+ <a th:href="@{/}">Regresar</a>
+ <form th:action="@{/guardar}"method="post" th:object="${persona}">
+ 		<label for="nombre" >Nombre:</label>
+ 		<input type="text" name="nombre" th:field="*{nombre}"/>
+ </form>
+</body>
+</html>

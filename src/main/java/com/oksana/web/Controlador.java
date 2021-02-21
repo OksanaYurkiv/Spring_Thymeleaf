@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.oksana.domain.Cliente;
 import com.oksana.servicio.PersonaService;
 
 import lombok.*;
@@ -22,5 +24,8 @@ public class Controlador {
 		model.addAttribute("personas", personas);
 		return "inicio";
 	}
-
+	@GetMapping("/agregar")
+   public String agregar (Cliente persona) {
+		return "modificar1";
+	}
 }
