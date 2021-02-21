@@ -9,9 +9,23 @@
 <body>
  <h1>Datos de la persona</h1>
  <a th:href="@{/}">Regresar</a>
- <form th:action="@{/guardar}"method="post" th:object="${persona}">
+ <form th:action="@{/guardar}"method="post" th:object="${cliente}">
  		<label for="nombre" >Nombre:</label>
  		<input type="text" name="nombre" th:field="*{nombre}"/>
+ 		<br/>
+ 		<label for="apellido" >Apellido:</label>
+ 		<input type="text" name="apellido" th:field="*{apellido}"/>
+ 		<br/>
+ 		<label for="email" >Email:</label>
+ 		<input type="text" name="email" th:field="*{email}"/>
+ 		<br/>
+ 		<label for="telefono" >Telefono:</label>
+ 		<input type="tel" name="telefono" th:field="*{telefono}"/>
+ 		<br/>
+ 		<label for="saldo" >Saldo:</label>
+ 		<input type="text" name="saldo" th:field="*{saldo}"/>
+ 		
+ 		<input type="submit" name="guardar" value="Guardar"/>
  </form>
 </body>
 </html>

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.oksana.domain.Cliente;
 import com.oksana.servicio.PersonaService;
@@ -27,5 +28,11 @@ public class Controlador {
 	@GetMapping("/agregar")
    public String agregar (Cliente persona) {
 		return "modificar1";
+		
+	}
+	@PostMapping ("/guardar")
+	public String guardar(Cliente persona) {
+			personaService.guardar (persona);
+		return "redirect:/";
 	}
 }
