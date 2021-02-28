@@ -35,7 +35,7 @@ personaDao.delete(persona);
 	@Override
 	@Transactional (readOnly = true)
 	public Persona encontrarPersona(Persona persona) {
-       return personaDao.findById(persona.getIdCliente()).orElse (null);
+       return personaDao.findById(persona.getIdPersona()).orElse (null);
 	}
 
 }

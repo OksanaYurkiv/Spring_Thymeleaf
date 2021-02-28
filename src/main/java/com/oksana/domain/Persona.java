@@ -13,7 +13,7 @@ public class Persona implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCliente;
+	private Long idPersona;
 	private	String nombre;
 	private	String apellido;
 	private	String email;

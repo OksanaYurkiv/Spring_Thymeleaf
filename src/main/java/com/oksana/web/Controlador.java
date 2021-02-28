@@ -38,9 +38,11 @@ public class Controlador {
 		return "redirect:/";
 	}
 
-	@GetMapping("/editar/{idCliente}")
+	@GetMapping("/editar/{idPersona}")
 	public String editar(Persona persona, Model model) {
-
+		//estas dos lineas sirven para que los campos se rellenen con los datos de idPersona
+     persona = personaService.encontrarPersona(persona);
+     model.addAttribute("persona", persona);
 		return "modificar1";
 	}
 }
