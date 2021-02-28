@@ -5,36 +5,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.oksana.dao.ClienteDao;
-import com.oksana.domain.Cliente;
+import com.oksana.dao.PersonaDao;
+import com.oksana.domain.Persona;
 
 @Service
 public class PersonaServiceImpl implements PersonaService {
 
 	@Autowired
-	private ClienteDao personaDao;
+	private PersonaDao personaDao;
 
 	@Override
 	@Transactional (readOnly = true)
-	public List<Cliente> listarPersonas() {
-		return (List<Cliente>) personaDao.findAll();
+	public List<Persona> listarPersonas() {
+		return (List<Persona>) personaDao.findAll();
 	}
 
 	@Override
 	@Transactional 
-	public void guardar(Cliente persona) {
+	public void guardar(Persona persona) {
         personaDao.save(persona);
 	}
 
 	@Override
 	@Transactional
-	public void eliminar(Cliente persona) {
+	public void eliminar(Persona persona) {
 personaDao.delete(persona);
 	}
 
 	@Override
 	@Transactional (readOnly = true)
-	public Cliente encontrarPersona(Cliente persona) {
+	public Persona encontrarPersona(Persona persona) {
        return personaDao.findById(persona.getIdCliente()).orElse (null);
 	}
 

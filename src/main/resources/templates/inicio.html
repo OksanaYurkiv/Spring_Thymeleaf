@@ -16,6 +16,9 @@
 		    	<th> Email </th>
 		    	<th> Telefono</th>
 		    	<th> Saldo</th>
+		    	<th> Editar</th>
+		    	<th> Eliminar</th>
+		    	
 		    </tr>
 		    <tr th:each="persona :${personas}">
 			      <td th:text="${persona.nombre}"> Mostrar nombre </td> 
@@ -23,6 +26,7 @@
 			      <td th:text="${persona.email}"> Mostrar email </td> 
 			      <td th:text="${persona.telefono}"> Mostrar telefono </td> 
 			      <td th:text="${persona.saldo}"> Mostrar saldo </td> 
+			      <td> <a th:href="@{/editar/} + ${persona.idCliente}" th:text="Editar"/> </td>
 		    </tr>
    
     </table>
