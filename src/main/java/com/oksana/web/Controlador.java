@@ -45,4 +45,9 @@ public class Controlador {
      model.addAttribute("persona", persona);
 		return "modificar1";
 	}
+	@GetMapping ("/eliminar")
+	public String eliminar (Persona persona){
+		personaService.eliminar(persona);
+		return "redirect:/";
+	}
 }

@@ -10,6 +10,9 @@
  <h1>Datos de la persona</h1>
  <a th:href="@{/}">Regresar</a>
  <form th:action="@{/guardar}"method="post" th:object="${persona}">
+        <!hidden - campo oculto>
+        <input type= "hidden" name = "idPersona" th:field="*{idPersona}"/>
+        
  		<label for="nombre" >Nombre:</label>
  		<input type="text" name="nombre" th:field="*{nombre}"/>
  		<br/>
