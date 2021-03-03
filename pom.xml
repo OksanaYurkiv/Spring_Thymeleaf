@@ -26,7 +26,19 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		
+<!-- añadido debido a que no reconocia @NotEmpty - FUNCIONA -->
+		<dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.1.Final</version>
+     </dependency>
+     
+     
+     <dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.0.13.Final</version>
+</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 <dependency>
