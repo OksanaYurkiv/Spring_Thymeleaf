@@ -17,7 +17,7 @@ import lombok.var;
 public class WebConfig implements WebMvcConfigurer{
 	
 	@Bean
-	public LocaleResolver localResolver() {
+	public LocaleResolver localeResolver() {
 		var slr = new SessionLocaleResolver();
 		slr.setDefaultLocale(new Locale("es"));
 		return slr;
