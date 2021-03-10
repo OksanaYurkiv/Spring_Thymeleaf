@@ -36,7 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {    //para co
 		 	   .and()
 		 	   		.formLogin()
 		 	   		.loginPage("/login")
-		 ; 
+		 	   	.and()
+		 	   		.exceptionHandling().accessDeniedPage("/errores/403")
+		      ; 
 		  
 	 }
 	}

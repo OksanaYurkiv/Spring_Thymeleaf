@@ -9,13 +9,10 @@
 <body>
 	<header th:replace="layout/plantilla :: header"> </header>
 	
-<<<<<<< HEAD
  	<h2> [[#{persona.formulario}]]</h2>
  <a th:href="@{/}"> [[#{accion.regresar}]]</a>
-=======
- 	<h2>Datos de la persona</h2>
- <a th:href="@{/}">Regresar</a>
->>>>>>> branch 'master' of https://github.com/OksanaYurkiv/Spring_Thymeleaf.git
+
+
  <form th:action="@{/guardar}"method="post" th:object="${persona}">
  
         <!-- hidden - campo oculto-->

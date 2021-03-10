@@ -40,6 +40,7 @@ public class WebConfig implements WebMvcConfigurer{
 	 public void addViewControllers(ViewControllerRegistry registro) {
 		 registro.addViewController("/").setViewName("inicio");
 		 registro.addViewController("/login");  //mapeo a login sin pasar por Controller
+		 registro.addViewController("/errores/403").setViewName("errores/403");
 	 }
 	 
 	 

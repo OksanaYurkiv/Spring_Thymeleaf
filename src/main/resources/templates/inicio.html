@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html  xmlns:th= "http://www.thymeleaf.org">
+<html  xmlns:th= "http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- namespace de seguridad -->
 <head>
 <title>Bienvenido</title>
 <meta charset="UTF-8">
@@ -9,11 +11,8 @@
 
    <header th:replace="layout/plantilla :: header"> </header>
    
-<<<<<<< HEAD
-   <a th:href="@{/agregar}">[[#{persona.crear}]]</a>
-=======
-   <a th:href="@{/agregar}">Crear Persona</a>
->>>>>>> branch 'master' of https://github.com/OksanaYurkiv/Spring_Thymeleaf.git
+   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>   <!-- sec:authorize="hasRole('ROLE_ADMIN')"  OCULTAMOS informacion para usuarios que no sean ADMIN  -->
+
      <div th:if="${personas !=null and !personas.empty}">
      	<table border ="1" >
 		    <tr> 
@@ -21,8 +20,8 @@
 		    	<th>  [[#{persona.apellido}]] </th>
 		    	<th>  [[#{persona.email}]] </th>
 		    	<th>  [[#{persona.telefono}]]</th>
-		    	<th>  [[#{accion.editar}]]</th>
-		    	<th>  [[#{accion.eliminar}]]</th>
+		    	<th sec:authorize="hasRole('ROLE_ADMIN')">  [[#{accion.editar}]]</th>
+		    	<th sec:authorize="hasRole('ROLE_ADMIN')">  [[#{accion.eliminar}]]</th>
 		    	
 		    </tr>
 		    <tr th:each="persona :${personas}">
@@ -31,10 +30,10 @@
 			      <td th:text="${persona.email}"> Mostrar email </td> 
 			      <td th:text="${persona.telefono}"> Mostrar telefono </td> 
 			   
-			      <td> <a th:href="@{/editar/} + ${persona.idPersona}" />[[#{accion.editar}]] </td>
+			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/editar/} + ${persona.idPersona}">[[#{accion.editar}]] </a></td>
 			      
 			      <!--  añadimos query parametr (idPersona =${persona.idPersona})-->
-			      <td> <a th:href="@{/eliminar (idPersona =${persona.idPersona})}"/>[[#{accion.eliminar}]]</td>
+			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/eliminar (idPersona =${persona.idPersona})}">[[#{accion.eliminar}]]</a></td>
 		    </tr>
    
     </table>

@@ -4,7 +4,10 @@ package com.oksana.web;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.oksana.domain.Persona;
 import com.oksana.servicio.PersonaService;
 
-import lombok.*;
+import lombok.var;
+
+
+
 
 @Controller
 public class Controlador {
@@ -24,9 +30,10 @@ public class Controlador {
 	private PersonaService personaService;
 
 	@GetMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model, @AuthenticationPrincipal User user) { //añadiendo @AuthenticationPrincipal recuperamos el usuario que hizo login
 
 		var personas = personaService.listarPersonas();
+		//log.info("usuario que hizo login:" + user);  //mandar el mensaje a la consola OJO! importar la clase para que funcione
 		model.addAttribute("personas", personas);
 		return "inicio";
 	}
