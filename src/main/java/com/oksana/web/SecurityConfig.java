@@ -1,17 +1,22 @@
 package com.oksana.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity   //para habilitar la seguridad web
 public class SecurityConfig extends WebSecurityConfigurerAdapter  {    //para configurar los usuarios
 	
-	//Autenticación
-	//el metodo sirve para agregar más usuarios y personalizar
+	/*Autenticación
+	el metodo sirve para agregar más usuarios y personalizar
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception { 
 		auth.inMemoryAuthentication()
@@ -24,6 +29,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {    //para co
 				.roles("USER")
          ;
 	}
+	*/
+	
+	//inyectamos el servicio de usuario
+	@Autowired
+	private UserDetailsService userDetailsService;
+		
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Autowired
+	public void configurerGlobal (AuthenticationManagerBuilder build) throws Exception {
+		build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	}
+	
+	
 	// Autorización	
 	// sirve para restringir las urls de la app
 	@Override
