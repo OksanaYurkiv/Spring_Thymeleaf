@@ -2,16 +2,19 @@
 <html  xmlns:th= "http://www.thymeleaf.org"
        xmlns="http://www.w3.org/1999/xhtml"
 	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- namespace de seguridad -->
-<head>
-<title>Bienvenido</title>
-<meta charset="UTF-8">
-</head>
-
-<body>
-
-   <header th:replace="layout/plantilla :: header"> </header>
+	   
+	<head th:replace="layout/plantilla :: head">
+		<title>Bienvenido</title>
+	</head>
+	
+	<body>
+		<header th:replace="layout/plantilla :: header"> </header>
    
-   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>   <!-- sec:authorize="hasRole('ROLE_ADMIN')"  OCULTAMOS informacion para usuarios que no sean ADMIN  -->
+   <!-- sec:authorize="hasRole('ROLE_ADMIN')"  OCULTAMOS informacion para usuarios que no sean ADMIN  
+        ATENCION!! habia escrito 'Role_ADMIN' y la app se lanzaba sin errores pero ocultaba las acciones de eliminar, editar... para ADMIN tambien. 
+        Asi que es importante que este bien escrito 'ROLE_ADMIN' en mayuscula ROLE -->
+   
+   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>   
 
      <div th:if="${personas !=null and !personas.empty}">
      	<table border ="1" >
