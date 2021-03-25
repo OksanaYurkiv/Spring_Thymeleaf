@@ -33,10 +33,10 @@
 			      <td th:text="${persona.email}"> Mostrar email </td> 
 			      <td th:text="${persona.telefono}"> Mostrar telefono </td> 
 			   
-			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/editar/} + ${persona.idPersona}">[[#{accion.editar}]] </a></td>
+			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/editar/} + ${persona.idPersona}"> [[#{accion.editar}]] </a></td>
 			      
 			      <!--  añadimos query parametr (idPersona =${persona.idPersona})-->
-			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/eliminar (idPersona =${persona.idPersona})}">[[#{accion.eliminar}]]</a></td>
+			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/eliminar (idPersona =${persona.idPersona})}"> [[#{accion.eliminar}]]</a></td>
 		    </tr>
    
     </table>
