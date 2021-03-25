@@ -10,46 +10,12 @@
 	<body>
 	
 		<header th:replace="layout/plantilla :: header"> </header>
-		<section th:replace="layout/botonesAgregar::botonesAgregar"></section>
-		<!--  <section th:replace="layout/agregarCliente::agregarCliente"></section>
-		<section th:replace="layout/listadoClientes::listadoClientes"></section>-->
+		<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+	<section th:replace="layout/agregarCliente::agregarCliente"></section>
 		
+		<section th:replace="layout/listadoClientes::listadoClientes"></section>
    	    <footer th:replace="layout/plantilla :: footer"> </footer>
-   <!-- sec:authorize="hasRole('ROLE_ADMIN')"  OCULTAMOS informacion para usuarios que no sean ADMIN  
-        ATENCION!! habia escrito 'Role_ADMIN' y la app se lanzaba sin errores pero ocultaba las acciones de eliminar, editar... para ADMIN tambien. 
-        Asi que es importante que este bien escrito 'ROLE_ADMIN' en mayuscula ROLE -->
-   
-   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/agregar}">[[#{persona.crear}]]</a>   
-
-     <div th:if="${personas !=null and !personas.empty}">
-     	<table border ="1" >
-		    <tr> 
-		    	<th> [[#{persona.nombre}]] </th>
-		    	<th>  [[#{persona.apellido}]] </th>
-		    	<th>  [[#{persona.email}]] </th>
-		    	<th>  [[#{persona.telefono}]]</th>
-		    	<th sec:authorize="hasRole('ROLE_ADMIN')">  [[#{accion.editar}]]</th>
-		    	<th sec:authorize="hasRole('ROLE_ADMIN')">  [[#{accion.eliminar}]]</th>
-		    	
-		    </tr>
-		    <tr th:each="persona :${personas}">
-			      <td th:text="${persona.nombre}"> Mostrar nombre </td> 
-			      <td th:text="${persona.apellido}"> Mostrar apellido </td> 
-			      <td th:text="${persona.email}"> Mostrar email </td> 
-			      <td th:text="${persona.telefono}"> Mostrar telefono </td> 
-			   
-			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/editar/} + ${persona.idPersona}"> [[#{accion.editar}]] </a></td>
-			      
-			      <!--  añadimos query parametr (idPersona =${persona.idPersona})-->
-			      <td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/eliminar (idPersona =${persona.idPersona})}"> [[#{accion.eliminar}]]</a></td>
-		    </tr>
-   
-    </table>
-    </div>
-      <div th:if="${personas ==null or personas.empty}">
-      [[#{persona.lista-vacia}]]
-      </div>
-      
+ 
       
 </body>
 </html>

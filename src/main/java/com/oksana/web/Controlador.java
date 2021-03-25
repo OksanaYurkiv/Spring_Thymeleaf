@@ -35,6 +35,12 @@ public class Controlador {
 		var personas = personaService.listarPersonas();
 		//log.info("usuario que hizo login:" + user);  //mandar el mensaje a la consola OJO! importar la clase para que funcione
 		model.addAttribute("personas", personas);
+		var saldoTotal=0D;
+		for(var p: personas) {
+			saldoTotal+= p.getSaldo();
+		}
+		model.addAttribute("saldoTotal", saldoTotal);
+		model.addAttribute("totalClientes", personas.size());
 		return "inicio";
 	}
 

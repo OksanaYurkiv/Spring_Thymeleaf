@@ -8,18 +8,17 @@
 	</head>
 	<body>
 		<section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3" sec:authorize="hasRole(´ROLE_ADMIN´)">
-					<a href="#" class="btn btn-primary btn-block"
-						data-toggle="modal" data-target="#agregarCliente">
-						<i class="fas fa-plus"></i>  [[#{accion.agregar}]]  <!--para que accede a accion.agregar -->
-						</a>
-					<div class="card">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a href="#" class="btn btn-primary btn-block"
+							data-toggle="modal" data-target="#agregarCliente">
+							<i class="fas fa-plus"></i>  [[#{accion.agregar}]]  <!--para que accede a accion.agregar -->
+							</a>
+<!-- 					<div class="card"> -->
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 	</body>
 </html>

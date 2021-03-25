@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html  xmlns:th= "http://www.thymeleaf.org"
-         xmlns="http://www.w3.org/1999/xhtml">
-       
-<head>
-<title>Datos de la persona</title>
-<meta charset="UTF-8"/>
-</head>
-<body>
-	<header th:replace="layout/plantilla :: header"> </header>
-	
- 	<h2> [[#{persona.formulario}]]</h2>
- <a th:href="@{/}"> [[#{accion.regresar}]]</a>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <title>Agregar Cliente</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <section th:fragment="agregarCliente">
+            <div id="agregarCliente" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title" th:text="#{accion.agregar}">Agregar Cliente</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div> 
+                        <form th:action="@{/guardar}" th:object="${persona}"
+                              method="POST" class="was-validated">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="nombre" th:text="#{persona.nombre}">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="apellido" th:text="#{persona.apellido}">Apelliudo</label>
+                                    <input type="text" class="form-control" name="apellido" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" th:text="#{persona.email}">Email</label>
+                                    <input type="email" class="form-control" name="email" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono" th:text="#{persona.telefono}">Teléfono</label>
+                                    <input type="tel" class="form-control" name="telefono">
+                                </div>
+                                <div class="form-group">
+                                    <label for="saldo" th:text="#{persona.saldo}">Saldo</label>
+                                    <input type="number" class="form-control" name="saldo" required="true" step="any">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-
- <form th:action="@{/guardar}"method="post" th:object="${persona}">
- 
-        <!-- hidden - campo oculto-->
-        <input type= "hidden" name = "idPersona" th:field="*{idPersona}"/>
-        
- 		<label for="nombre" > [[#{persona.nombre}]]:</label>
- 		<input type="text" name="nombre" th:field="*{nombre}"/>
- 		<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error Nombre</span>
- 		<br/>
- 		<label for="apellido" > [[#{persona.apellido}]]:</label>
- 		<input type="text" name="apellido" th:field="*{apellido}"/>
- 		<span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error Apellido</span>
- 		<br/>
- 		<label for="email" > [[#{persona.email}]]:</label>
- 		<input type="text" name="email" th:field="*{email}"/>
- 		<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error Email</span>
- 		<br/>
- 		<label for="telefono" > [[#{persona.telefono}]]:</label>
- 		<input type="tel" name="telefono" th:field="*{telefono}"/>
- 	    <br/>
- 		
- 		<input type="submit" name="guardar" th:value=" #{accion.guardar}"/>
- </form>
- 
-    <footer th:replace="layout/plantilla :: footer"> </footer>
-</body>
+    </body>
 </html>
