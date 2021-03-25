@@ -5,17 +5,23 @@
 		<title>Login</title>
 	</head>
 	<body>
-		<h1>Login</h1>
-		
-		<form method="POST" th:action="@{/login}">
-			<label for="username">Username: </label>
-			<input type="text" name="username" id="username"/> <!-- ATENCION! debe llamarse "username", porque es lo que espera Spring Security -->
-		    <br/>
-		    <label for="password">Password: </label>
-			<input type="password" name="password" id="password"/>
-			<br/>
-			<input type="submit" value="Login"/>
-		    
+		<header th:replace="layout/plantilla ::header"></header>
+			<section id="actions" class="py-4 mb-4 bg-light">
+				<div class="container">
+					<div class="row">
+					 <!--se puede poner buthon -->
+					</div>
+				</div>
+			</section>	
+				
+			<form method="POST" th:action="@{/login}">
+				<label for="username">Username: </label>
+				<input type="text" name="username" id="username"/> <!-- ATENCION! debe llamarse "username", porque es lo que espera Spring Security -->
+			    	<br/>
+			    <label for="password">Password: </label>
+				<input type="password" name="password" id="password"/>
+					<br/>
+				<input type="submit" value="Login"/>    
 		</form>
 	</body>
 </html>
