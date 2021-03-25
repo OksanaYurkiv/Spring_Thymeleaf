@@ -8,8 +8,13 @@
 	</head>
 	
 	<body>
+	
 		<header th:replace="layout/plantilla :: header"> </header>
-   
+		<section th:replace="layout/botonesAgregar::botonesAgregar"></section>
+		<!--  <section th:replace="layout/agregarCliente::agregarCliente"></section>
+		<section th:replace="layout/listadoClientes::listadoClientes"></section>-->
+		
+   	    <footer th:replace="layout/plantilla :: footer"> </footer>
    <!-- sec:authorize="hasRole('ROLE_ADMIN')"  OCULTAMOS informacion para usuarios que no sean ADMIN  
         ATENCION!! habia escrito 'Role_ADMIN' y la app se lanzaba sin errores pero ocultaba las acciones de eliminar, editar... para ADMIN tambien. 
         Asi que es importante que este bien escrito 'ROLE_ADMIN' en mayuscula ROLE -->
@@ -45,6 +50,6 @@
       [[#{persona.lista-vacia}]]
       </div>
       
-      <footer th:replace="layout/plantilla :: footer"> </footer>
+      
 </body>
 </html>
