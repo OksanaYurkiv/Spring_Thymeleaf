@@ -17,10 +17,10 @@ import com.oksana.domain.Rol;
 import com.oksana.domain.Usuario;
 
 import lombok.var;
-import lombok.extern.slf4j.Slf4j;
+
 
 @Service("userDetailsService")
-@Slf4j
+
 public class UsuarioService implements UserDetailsService{
 	
 	@Autowired
