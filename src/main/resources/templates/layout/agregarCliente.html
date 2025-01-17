@@ -18,27 +18,27 @@
 							<span>&times;</span>
 						</button>
 					</div>
-					<form th:action="@{/guardar}" th:object="${persona}" method="POST"
+					<form th:action="@{/guardar}" th:object="${customerEntity}" method="POST"
 						class="was-validated">
 						<div class="modal-body">
 							<div class="form-group">
-								<label for="nombre" th:text="#{persona.nombre}">Nombre</label> <input
+								<label for="nombre" th:text="#{customerEntity.nombre}">Nombre</label> <input
 									type="text" class="form-control" name="nombre" required="true">
 							</div>
 							<div class="form-group">
-								<label for="apellido" th:text="#{persona.apellido}">Apellido</label>
+								<label for="apellido" th:text="#{customerEntity.apellido}">Apellido</label>
 								<input type="text" class="form-control" name="apellido" required="true"> 
 							</div>
 							<div class="form-group">
-								<label for="email" th:text="#{persona.email}">Email</label> 
+								<label for="email" th:text="#{customerEntity.email}">Email</label>
 								<input type="email" class="form-control" name="email" required="true">
 							</div>
 							<div class="form-group">
-								<label for="telefono" th:text="#{persona.telefono}">Telefono</label>
+								<label for="telefono" th:text="#{customerEntity.telefono}">Telefono</label>
 								<input type="tel" class="form-control" name="telefono">
 							</div>
 							<div class="form-group">
-								<label for="saldo" th:text="#{persona.saldo}">Saldo</label> 
+								<label for="saldo" th:text="#{customerEntity.saldo}">Saldo</label>
 								<input type="number" class="form-control" name="saldo" required="true" step="any">
 							</div>
 						</div>

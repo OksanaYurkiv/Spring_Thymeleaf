@@ -13,33 +13,33 @@
 				<div class="col-md-9">
 					<div class="card">
 						<div class="card-header">
-							<h4>[[#{persona.titulo-lista}]]</h4>
+							<h4>[[#{customerEntity.titulo-lista}]]</h4>
 						</div>
 						<div th:if="${personas !=null and !personas.empty}">
 							<table class="table table-stryped">
 								<thead class="thead-dark">
 									<tr>
 										<th>#</th>
-										<th th:text="#{persona.nombre}">Nombre</th>
-										<th th:text="#{persona.saldo}">Saldo</th>
+										<th th:text="#{customerEntity.nombre}">Nombre</th>
+										<th th:text="#{customerEntity.saldo}">Saldo</th>
 										<th></th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="persona, contador : ${personas}">
+									<tr th:each="customerEntity, contador : ${personas}">
 										<td>[[${contador.count}]]</td>
-										<td>[[${persona.nombre} + ' ' + ${persona.apellido}]]</td>
+										<td>[[${customerEntity.nombre} + ' ' + ${customerEntity.apellido}]]</td>
 										<td>[[${new
-											java.text.DecimalFormat('€#,##0.00').format(persona.saldo)}]]</td>
+											java.text.DecimalFormat('€#,##0.00').format(customerEntity.saldo)}]]</td>
 
 										<td><a sec:authorize="hasRole('ROLE_ADMIN')"
-											th:href="@{/editar/} + ${persona.idPersona}"
+											th:href="@{/editar/} + ${customerEntity.idPersona}"
 											class="btn btn-secondary"> <i
 												class="fas fa-angle-double-right"></i> [[#{accion.editar}]]
 										</a></td>
 										<td><a sec:authorize="hasRole('ROLE_ADMIN')"
-											th:href="@{/eliminar(idPersona= ${persona.idPersona})}"
+											th:href="@{/eliminar(idPersona= ${customerEntity.idPersona})}"
 											class="btn btn-dark"> <i
 												class="fas fa-angle-double-right"></i>
 												[[#{accion.eliminar}]]
@@ -50,7 +50,7 @@
 						</div>
 						<div class="text-center p-2"
 							th:if="${personas ==null or personas.empty}">
-							<span th:text="#{persona.lista-vacia}"> Lista vacia</span>
+							<span th:text="#{customerEntity.lista-vacia}"> Lista vacia</span>
 						</div>
 					</div>
 				</div>
@@ -58,14 +58,14 @@
 				<div class="col-md-3">
 					<div class="card text-center bg-danger text-white mb-3">
 						<div class="card-body">
-							<h3 th:text="#{persona.saldoTotal}">Saldo total</h3>
+							<h3 th:text="#{customerEntity.saldoTotal}">Saldo total</h3>
 							<h4 class="display-4">[[${new
 								java.text.DecimalFormat('€#,##0.00').format(saldoTotal)}]]</h4>
 						</div>
 					</div>
 					<div class="card text-center bg-success text-white mb-3">
 						<div class="card-body">
-							<h3 th:text="#{persona.totalClientes}">Total Clientes</h3>
+							<h3 th:text="#{customerEntity.totalClientes}">Total Clientes</h3>
 							<h4 class="display-4">
 								<i class="fas fa-users"></i>[[${totalClientes}]]
 							</h4>

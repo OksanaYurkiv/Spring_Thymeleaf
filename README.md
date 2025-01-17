@@ -22,7 +22,7 @@ Asegúrate de tener instalados los siguientes programas antes de comenzar:
 
 Al introducir la contraseña, se encripta y se comprueba el valor encriptado con el valor que
 está guardado en la base de datos.
-Importante saber: por la seguridad de usuario, nunca se debe guardar el valor real de la contraseña, por eso se usa la
+Importante saber: por la seguridad de userEntity, nunca se debe guardar el valor real de la contraseña, por eso se usa la
 encriptación.
 
 ### 2. **Control de clientes**
@@ -38,5 +38,30 @@ Tener en cuenta, que todos los campos son obligatorios, excepto "telefono".
 ### 1. **Clonar el Repositorio**
 
 ```bash
-git clone https://github.com
-cd gestion-clientes
+git clone https://github.com/OksanaYurkiv/customer_management.git
+```
+
+### 2. **Arrancar el proyecto**
+
+```bash
+mvn clean package
+```
+
+Run
+
+### 3. **Para probar en navegador**
+
+```bash
+http://localhost:8080/
+```
+
+### 4. **Para ver los registros en la base de datos**
+
+```bash
+http://localhost:8080/h2-console
+```
+Dejar todo por defecto, excepto JDBC URL, tiene que ser la siguiente
+
+```bash
+jdbc:h2:mem:testdb
+```
