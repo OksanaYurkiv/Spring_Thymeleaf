@@ -10,9 +10,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * SecurityConfig
+ * Se habilita la seguridad web con @EnableWebSecurity
+ * Se configurar los usuarios con WebSecurityConfigurerAdapter
+ *
+ * @author Oksana Yurkiv
+ */
 @Configuration
-@EnableWebSecurity   //para habilitar la seguridad web
-public class SecurityConfig extends WebSecurityConfigurerAdapter  {    //para configurar los usuarios
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	/*Autenticación
 	el metodo sirve para agregar más usuarios y personalizar
@@ -30,38 +37,50 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {    //para co
          ;
 	}
 	*/
-	
-	//inyectamos el servicio de usuario
-	@Autowired
-	private UserDetailsService userDetailsService;
-		
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	@Autowired
-	public void configurerGlobal (AuthenticationManagerBuilder build) throws Exception {
-		build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-	}
-	
-	
-	// Autorización	
-	// sirve para restringir las urls de la app
-	@Override
-	protected void configure (HttpSecurity http) throws Exception {
-		 http.authorizeRequests()
-		 	   .antMatchers("/editar/**", "/agregar/**", "/eliminar")  //  doble asterisco ** significa que sub-path tambien van a estar restringidos
-		 		   .hasRole("ADMIN") // solo rol ADMIN pueden acceder a paths editar, agregar, eliminar
-		 	   .antMatchers("/") // path raiz
-		 		   .hasAnyRole("USER", "ADMIN")//no hace falta especificar ROLE_USER etc. ya que Spring lo hace en automatico	 
-		 	   .and()
-		 	   		.formLogin()
-		 	   		.loginPage("/login")
-		 	   	.and()
-		 	   		.exceptionHandling().accessDeniedPage("/errores/403")
-		      ; 
-		  
-	 }
-	}
+
+    //TODO: en vez de  @Autowired usar constructor
+    //revisar en todo proyecto
+
+    //inyectamos el servicio de usuario
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
+        build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    }
+
+    /**
+     * Security config.
+     * Autorización - sirve para restringir las urls de la app
+     *
+     * @param http HttpSecurity
+     * @throws Exception
+     */
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        /**
+         * Si los roles de usuarios en la base de datos están almacenados como ADMIN o USER sin el prefijo ROLE_, Spring Security no los reconocerá correctamente.
+         */
+        http.authorizeRequests()
+                .antMatchers("/editar/**", "/agregar/**", "/eliminar").hasRole("ADMIN")
+                .antMatchers("/").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/h2-console/**").permitAll() // Permitir acceso libre a H2-console
+                .and()
+                .csrf().ignoringAntMatchers("/h2-console/**") // Desactivar CSRF solo para H2
+                .and()
+                .headers().frameOptions().disable() // Permitir el uso de frames para H2
+                .and()
+                .formLogin().loginPage("/login")
+                .and()
+                .exceptionHandling().accessDeniedPage("/errores/403");
+
+    }
+}
 

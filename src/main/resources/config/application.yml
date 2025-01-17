@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb # URL de la base de datos H2 (en memoria)
+    driver-class-name: org.h2.Driver # Clase del controlador JDBC
+    username: sa # Usuario predeterminado de H2
+    password: # Contraseña (vacía por defecto)
+    initialization-mode: always
+    platform: h2
+  h2:
+    console:
+      enabled: true # Habilita la consola web de H2
+      path: /h2-console # Ruta para acceder a la consola web
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect # Dialecto de Hibernate para H2
+    hibernate:
+      ddl-auto: update # Estrategia de gestión del esquema (create, update, validate, none)
+    show-sql: true # Muestra las consultas SQL en la consola
+    properties:
+      hibernate:
+        format_sql: true # Formatea las consultas SQL

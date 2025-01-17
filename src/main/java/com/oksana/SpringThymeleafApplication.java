@@ -1,17 +1,22 @@
 package com.oksana;
 
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.security.core.context.SecurityContextHolder;
 
+/**
+ * Main
+ *
+ * @author Oksana Yurkiv
+ */
 @SpringBootApplication
 public class SpringThymeleafApplication {
 
+    public static void main(String[] args) {
+        SecurityContextHolder.setStrategyName(SecurityContextHolder.MODE_INHERITABLETHREADLOCAL);
+        new SpringApplicationBuilder(SpringThymeleafApplication.class).web(WebApplicationType.SERVLET).run(args);
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringThymeleafApplication.class, args);
-		
-		/* 30.04.2021 */
-		/*prueba1*/
-	}
+    }
 
 }
