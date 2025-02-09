@@ -33,6 +33,20 @@ encriptación.
 
 Tener en cuenta, que todos los campos son obligatorios, excepto "telefono".
 
+
+## Explicaciones
+
+### Plantillas: 
+En las plantillas "accion.guardar" hace referencia al texto de archivo messages.properties
+
+Si añadimos nuevos botones importante poner bien la ruta, por ejemplo th:href="@{/save}
+
+### Controlador:
+
+* Los GET son para botones, para acceder al formulario.
+Tienen que recibir como parametro el objeto Model
+* Los POST son acciones de botones del formulario, los que hacen cambios en la base de datos.
+
 ## Comandos de Uso
 
 ### 1. **Clonar el Repositorio**

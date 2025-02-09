@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html  xmlns:th= "http://www.thymeleaf.org"
-       xmlns="http://www.w3.org/1999/xhtml"
-	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- namespace de seguridad -->
-	   
-	<head th:replace="layout/plantilla :: head">
-		<title>Bienvenido</title>
-	</head>
-	
-	<body>
-	
-		<header th:replace="layout/plantilla :: header"> </header>
-		<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
-	    <section th:replace="layout/agregarCliente :: agregarCliente"></section>
-		<section th:replace="layout/listadoClientes :: listadoClientes"></section>
-   	    <footer th:replace="layout/plantilla :: footer"> </footer>
- 
-      
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+> <!-- namespace de seguridad -->
+
+<head th:replace="layout/plantilla :: head">
+    <title>Bienvenido</title>
+</head>
+
+<body>
+
+<header th:replace="layout/plantilla :: header"></header>
+<section th:replace="layout/botonesAgregar :: botonesAgregar"></section>
+<section th:replace="layout/exportPdfButton :: exportPdfButton"></section>
+<section th:replace="layout/listadoClientes :: listadoClientes"></section>
+<footer th:replace="layout/plantilla :: footer"></footer>
+
 </body>
 </html>

@@ -11,9 +11,9 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
-						<a href="#" class="btn btn-primary btn-block"
+						<a th:href="@{/save}" class="btn btn-primary btn-block"
 							data-toggle="modal" data-target="#agregarCliente">
-							<i class="fas fa-plus"></i>  [[#{accion.agregar}]]  <!--para que accede a accion.agregar -->
+							<i class="fas fa-plus"></i>  [[#{accion.agregar}]]
 				     	</a>
 					</div>
 				</div>

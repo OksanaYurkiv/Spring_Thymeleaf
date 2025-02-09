@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  xmlns:th= "http://www.thymeleaf.org"
+       xmlns="http://www.w3.org/1999/xhtml"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- namespace de seguridad -->
+	<head>   
+		<title>Descargar PDF</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<section th:fragment="exportPdfButton" class="py-4 mb-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
+						<a th:href="@{/export/pdf}" class="btn btn-secondary btn-block"
+							data-toggle="modal" data-target="#exportPdf">
+							<i class="fas fa-download"></i>  [[#{accion.exportPdf}]]  <!--para que accede a accion.agregar -->
+				     	</a>
+					</div>
+				</div>
+			</div>
+	</section>
+	</body>
+</html>
