@@ -52,5 +52,30 @@ Tienen que recibir como parametro el objeto Model
 ### 1. **Clonar el Repositorio**
 
 ```bash
-git clone https://github.com
-cd gestion-clientes
+git clone https://github.com/OksanaYurkiv/customer_management.git
+```
+
+### 2. **Arrancar el proyecto**
+
+```bash
+mvn clean package
+```
+
+Run
+
+### 3. **Para probar en navegador**
+
+```bash
+http://localhost:8080/
+```
+
+### 4. **Para ver los registros en la base de datos**
+
+```bash
+http://localhost:8080/h2-console
+```
+Dejar todo por defecto, excepto JDBC URL, tiene que ser la siguiente
+
+```bash
+jdbc:h2:mem:testdb
+```
