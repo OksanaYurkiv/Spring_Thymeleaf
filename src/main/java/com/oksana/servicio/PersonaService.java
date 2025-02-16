@@ -1,18 +1,19 @@
 package com.oksana.servicio;
 
-import java.util.List;
-
 import com.oksana.domain.Persona;
 
+import java.util.List;
+
 public interface PersonaService {
-	
-	//añadimos metodos CRUD
-	public List<Persona> listarPersonas();
-	
-	public void guardar (Persona persona);
-	
-	public void eliminar (Persona persona);
-	
-	public Persona encontrarPersona (Persona persona);
-	
+
+    // CRUD method
+    List<Persona> listarPersonas();
+
+    void guardar(Persona persona);
+
+    void eliminar(Persona persona);
+
+    Persona encontrarPersona(Long idPersona);
+
+    void editar(Persona persona);
 }

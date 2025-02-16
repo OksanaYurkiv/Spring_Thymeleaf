@@ -1,9 +1,8 @@
 package com.oksana.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.oksana.domain.Persona;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface PersonaDao extends JpaRepository <Persona, Long> {
+public interface PersonaDao extends JpaRepository<Persona, Long> {
 
-	
 }

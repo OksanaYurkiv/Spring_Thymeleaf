@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clientes</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+
+<div class="modal-content">
+
+    <div th:if="${personas != null and !personas.isEmpty()}">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+            <tr>
+                <th></th>
+                <th th:text="#{persona.nombre}">Nombre</th>
+                <th th:text="#{persona.saldo}">Saldo</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="persona, contador : ${personas}">
+                <td th:text="${contador.count}"></td> <!-- Contador de fila -->
+                <td th:text="${persona.nombre} + ' ' + ${persona.apellido}"></td> <!-- Nombre completo -->
+                <td th:text="${persona.saldo}"></td> <!--  saldo -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <h5 class="modal-title" th:text="${totalClients_text} + ${totalClients}"></h5>
+
+</div>
+
+</body>
+</html>
