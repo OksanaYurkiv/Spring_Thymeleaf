@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
@@ -68,16 +69,16 @@ public class Controlador {
     }
 
     @GetMapping("/editar/{idPersona}")
-    public String updateById(@ModelAttribute("persona") Persona persona, Model model) {
+    public String updateById(@PathVariable("idPersona") Long idPersona, Model model) {
 
         //estas dos lineas sirven para que los campos se rellenen con los datos de idPersona
-        Persona personaExist = personaService.encontrarPersona(persona.getIdPersona());
+        Persona personaExist = personaService.encontrarPersona(idPersona);
         model.addAttribute("persona", personaExist);
 
         return "update_client.html"; // Renderiza el formulario de edición
     }
 
-    @PostMapping("/editar/{idPersona}")
+    @PostMapping("/editar")
     public String update(@ModelAttribute("persona") Persona persona) {
         personaService.editar(persona); // Actualiza la entidad
         return "redirect:/"; // Redirige a la lista de personas
