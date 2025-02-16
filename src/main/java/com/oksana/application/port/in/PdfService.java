@@ -1,4 +1,4 @@
-package com.oksana.servicio;
+package com.oksana.application.port.in;
 
 import javax.servlet.http.HttpServletResponse;
 
